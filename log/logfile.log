@@ -1,0 +1,109 @@
+DEBUG: Checking if ExtractAPIPaymentData() is complete
+INFO: Informed scheduler that task   ExtractAPIPaymentData__99914b932b   has status   DONE
+DEBUG: Checking if ExtractDBHotelData() is complete
+INFO: Informed scheduler that task   ExtractDBHotelData__99914b932b   has status   DONE
+DEBUG: Checking if ValidateData() is complete
+/home/shandytp/course-intro-to-data-eng/venv/lib/python3.9/site-packages/luigi/worker.py:426: UserWarning: Task ValidateData() without outputs has no custom complete() method
+  is_complete = task.complete()
+DEBUG: Checking if ExtractAPIPaymentData() is complete
+DEBUG: Checking if ExtractDBHotelData() is complete
+INFO: Informed scheduler that task   ValidateData__99914b932b   has status   PENDING
+INFO: Informed scheduler that task   ExtractDBHotelData__99914b932b   has status   DONE
+INFO: Informed scheduler that task   ExtractAPIPaymentData__99914b932b   has status   DONE
+DEBUG: Checking if TransformHotelData() is complete
+INFO: Informed scheduler that task   TransformHotelData__99914b932b   has status   DONE
+DEBUG: Checking if LoadData() is complete
+INFO: Informed scheduler that task   LoadData__99914b932b   has status   DONE
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 1
+INFO: [pid 28927] Worker Worker(salt=7417661590, workers=1, host=shandytp, username=shandytp, pid=28927) running   ValidateData()
+INFO: [pid 28927] Worker Worker(salt=7417661590, workers=1, host=shandytp, username=shandytp, pid=28927) done      ValidateData()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   ValidateData__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=7417661590, workers=1, host=shandytp, username=shandytp, pid=28927) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 5 tasks of which:
+* 4 complete ones were encountered:
+    - 1 ExtractAPIPaymentData()
+    - 1 ExtractDBHotelData()
+    - 1 LoadData()
+    - 1 TransformHotelData()
+* 1 ran successfully:
+    - 1 ValidateData()
+
+This progress looks :) because there were no failed tasks or missing dependencies
+
+===== Luigi Execution Summary =====
+
+========== Start Pipeline Validation ==========
+
+Pada table payment memiliki jumlah 400 baris dan 7 kolom
+
+Column payment_id has data type int64
+Column reservation_id has data type int64
+Column provider has data type object
+Column account_number has data type int64
+Column payment_status has data type object
+Column payment_date has data type object
+Column expire_date has data type object
+
+Columns payment_id has percentages missing values 0.0 %
+Columns reservation_id has percentages missing values 0.0 %
+Columns provider has percentages missing values 0.0 %
+Columns account_number has percentages missing values 0.0 %
+Columns payment_status has percentages missing values 0.0 %
+Columns payment_date has percentages missing values 21.0 %
+Columns expire_date has percentages missing values 0.0 %
+
+========== End Pipeline Validation ==========
+========== Start Pipeline Validation ==========
+
+Pada table reservation memiliki jumlah 400 baris dan 9 kolom
+
+Column reservation_id has data type int64
+Column customer_id has data type int64
+Column reservation_date has data type object
+Column start_date has data type object
+Column end_date has data type object
+Column total_price has data type float64
+Column review has data type object
+Column rating has data type int64
+Column created_at has data type object
+
+Columns reservation_id has percentages missing values 0.0 %
+Columns customer_id has percentages missing values 0.0 %
+Columns reservation_date has percentages missing values 0.0 %
+Columns start_date has percentages missing values 0.0 %
+Columns end_date has percentages missing values 0.0 %
+Columns total_price has percentages missing values 0.0 %
+Columns review has percentages missing values 0.0 %
+Columns rating has percentages missing values 0.0 %
+Columns created_at has percentages missing values 0.0 %
+
+========== End Pipeline Validation ==========
+========== Start Pipeline Validation ==========
+
+Pada table customer memiliki jumlah 1000 baris dan 6 kolom
+
+Column customer_id has data type int64
+Column first_name has data type object
+Column last_name has data type object
+Column email has data type object
+Column phone has data type object
+Column created_at has data type object
+
+Columns customer_id has percentages missing values 0.0 %
+Columns first_name has percentages missing values 0.0 %
+Columns last_name has percentages missing values 0.0 %
+Columns email has percentages missing values 0.0 %
+Columns phone has percentages missing values 0.0 %
+Columns created_at has percentages missing values 0.0 %
+
+========== End Pipeline Validation ==========
