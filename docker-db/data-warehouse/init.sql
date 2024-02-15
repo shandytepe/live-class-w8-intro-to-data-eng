@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS hotel_analysis_table(
     email varchar,
     domain_email varchar,
     reservation_date timestamp,
+    payment_date varchar,
     start_date timestamp,
     end_date timestamp,
     total_price numeric,
