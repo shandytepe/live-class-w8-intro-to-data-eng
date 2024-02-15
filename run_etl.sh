@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Start Luigi ETL Pipeline Process"
+
 # Virtual Environment Path
 VENV_PATH="/home/shandytp/course-intro-to-data-eng/venv/bin/activate"
 
@@ -15,3 +17,5 @@ python "$PYTHON_SCRIPT" >> /home/shandytp/course-intro-to-data-eng/log/logfile.l
 # logging simple
 dt=$(date '+%d/%m/%Y %H:%M:%S');
 echo "Luigi Started at ${dt}" >> /home/shandytp/course-intro-to-data-eng/log/luigi-info.log
+
+echo "End Luigi ETL Pipeline Process"
