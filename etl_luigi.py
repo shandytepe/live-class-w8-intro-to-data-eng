@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 from helper.db_connector import source_db_engine, dw_db_engine
 from helper.data_validator import validatation_process
+from pangres import upsert
 
 class ExtractAPIPaymentData(luigi.Task):
 
@@ -137,16 +138,25 @@ class LoadData(luigi.Task):
         # read data from previous task
         load_hotel_data = pd.read_csv(self.input().path)
 
+        load_hotel_data.insert(0, 'analysis_id', range(0, 0 + len(load_hotel_data)))
+
+        load_hotel_data = load_hotel_data.set_index("analysis_id")
+
         # init data warehouse engine
         dw_engine = dw_db_engine()
 
         dw_table_name = "hotel_analysis_table"
 
-        # insert data to data warehouse
-        load_hotel_data.to_sql(name = dw_table_name,
-                               con = dw_engine,
-                               if_exists = "append",
-                               index = False)
+        upsert(con = dw_engine,
+               df = load_hotel_data,
+               table_name = dw_table_name,
+               if_row_exists = "update")
+
+        # # insert data to data warehouse
+        # load_hotel_data.to_sql(name = dw_table_name,
+        #                        con = dw_engine,
+        #                        if_exists = "append",
+        #                        index = False)
 
         # save the output
         load_hotel_data.to_csv(self.output().path, index = False)
